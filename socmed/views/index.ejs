@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <ul>
+      <li>
+        <a href="/track">Tracker list</a>
+      </li>
+      <li>
+        <a href="/embed">Embed page</a>
+      </li>
+    </ul>
+
+    <script>
+      console.log('Embed page');
+      console.log('cookies', document.cookie);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <form class="js-form">
+      <label>
+        Font Size
+        <input type="text" name="font-size">
+      </label>
+      <button>
+        Choose font size
+      </button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script>
+      const form = document.querySelector('.js-form');
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        const data = new FormData(form);
+
+        document.cookie = `font_size= ${data.get('font-size')}; max-age=${1000 * 60 * 60}; samesite='None'; secure=true`;
+      });
+    </script>
+  </body>
+</html>

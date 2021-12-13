@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <ul>
+      <li>
+        <a href="/galery">Galery page</a>
+      </li>
+      <li>
+        <a href="/theme">Theme page</a>
+        <% if (fontSize) { %>
+          You choose <%= theme %> theme.
+        <% } %>
+      </li>
+      <% if (fontSize) { %>
+        <li>
+          You choose font size <%= fontSize %>
+        </li>
+      <% } %>
+
+      <% if (promoVisited) { %>
+        <li>
+          You already visit the advertisement.
+        </li>
+      <% } else { %>
+        <li><a href="/advertisement">Advertisement page</a></li>
+      <% } %>
+      <li>
+        <a href="/articles/hello">article hello</a>
+        <a href="/articles/world">article world</a>
+        <a href="/articles/what">article what</a>
+      </li>
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script>
+      window.addEventListener('load', (event) => {
+        window.addEventListener("message", (event) => {
+          if (event.origin === "https://www.socmedlocal.com:3004") {
+            Cookies.set('socmed_id', event.data.socmed_id, {
+              expires: 7,
+              domain: 'weblocal.com',
+            });
+          }
+        }, false);
+
+        var trackerIframe = document.createElement("iframe");
+        trackerIframe.id = "socmed-personalization";
+        trackerIframe.style.display = "none";
+        trackerIframe.width = 0;
+        trackerIframe.height = 0;
+        trackerIframe.setAttribute("referrerpolicy","no-referrer-when-downgrade");
+        trackerIframe.src="https://www.socmedlocal.com:3004/embed";
+        document.body.appendChild(trackerIframe);
+      });
+    </script>
+  </body>
+</html>

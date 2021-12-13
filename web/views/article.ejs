@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+    <script>
+      window.addEventListener('load', (event) => {
+        const data = {
+          url: window.location.href,
+          id: window.Cookies.get('socmed_id'),
+        };
+        fetch('https://www.socmedlocal.com:3004/track', {
+          method: 'POST',
+          mode: 'cors',
+          body: JSON.stringify(data), // body data type must match "Content-Type" header
+          headers: {
+            'Content-Type': 'application/json'
+          },
+        });
+      });
+    </script>
+  </body>
+</html>

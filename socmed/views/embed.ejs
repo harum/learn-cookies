@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+  <script>
+    console.log('embed page');
+    const socmedId = Cookies.get('socmed_id');
+    console.log('socmed_id', socmedId);
+    console.log('asdf', window.parent.location);
+
+    // window.postMessage("hello there!", "https://www.socmedlocal.com:3004");
+    top.postMessage({ socmed_id: socmedId }, 'https://www.weblocal.com:3000');
+    console.log('afer postMessage', 'https://www.weblocal.com:3000', {
+      socmed_id: socmedId,
+    });
+  </script>
+</html>
